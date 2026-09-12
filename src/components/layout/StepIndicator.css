@@ -1,0 +1,84 @@
+.step-pipeline-nav {
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border-default);
+  padding: var(--space-2) 0;
+}
+
+.step-pipeline-list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+}
+
+.step-pipeline-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.step-pipeline-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  padding: 6px 4px;
+  font-family: var(--font-sans);
+  font-size: var(--font-sm);
+  color: var(--text-subtle);
+  cursor: default;
+  border-bottom: 2px solid transparent;
+  transition: color 0.12s ease;
+}
+
+.step-num-prefix {
+  font-size: var(--font-xs);
+  font-weight: var(--weight-medium);
+  display: inline-flex;
+  align-items: center;
+}
+
+.step-pipeline-label {
+  font-weight: var(--weight-regular);
+}
+
+/* Quiet inactive states */
+.step-pipeline-item.is-active .step-pipeline-btn {
+  color: var(--primary-default);
+  font-weight: var(--weight-semibold);
+  border-bottom-color: var(--primary-default);
+}
+
+.step-pipeline-item.is-active .step-num-prefix {
+  color: var(--primary-default);
+}
+
+.step-pipeline-item.is-completed .step-pipeline-btn {
+  color: var(--text-secondary);
+}
+
+.step-pipeline-item.is-completed .step-pipeline-btn:not(:disabled) {
+  cursor: pointer;
+}
+
+.step-pipeline-item.is-completed .step-pipeline-btn:not(:disabled):hover {
+  color: var(--text-primary);
+}
+
+.step-check-icon {
+  color: var(--text-muted);
+}
+
+.step-pipeline-divider {
+  color: var(--border-hover);
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .step-pipeline-item:not(.is-active) .step-pipeline-label {
+    display: none;
+  }
+}

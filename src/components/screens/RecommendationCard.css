@@ -1,0 +1,281 @@
+.recommendation-card {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  position: relative;
+  transition: border-color 0.12s ease;
+}
+
+.recommendation-card:hover {
+  border-color: var(--border-hover);
+}
+
+/* Primary Recommended Card Structural Difference */
+.recommendation-card.is-primary-card {
+  border-top: 3px solid var(--primary-default);
+}
+
+.recommendation-card.is-selected-card {
+  border-color: var(--primary-default);
+  box-shadow: 0 0 0 1px var(--primary-default), var(--shadow-sm);
+}
+
+/* Header */
+.card-header-block {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.card-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.card-category-sub {
+  font-size: var(--font-xs);
+  font-weight: var(--weight-medium);
+  color: var(--text-muted);
+}
+
+.card-instance-name {
+  font-size: var(--font-lg);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+  line-height: 1.25;
+}
+
+.card-region-caption {
+  font-size: var(--font-xs);
+  color: var(--text-subtle);
+}
+
+/* Suitability Score */
+.card-suitability-block {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 3px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.suitability-score-num {
+  font-size: var(--font-md);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+}
+
+.suitability-score-denom {
+  font-size: var(--font-xs);
+  color: var(--text-muted);
+}
+
+/* Cost */
+.card-cost-section {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.cost-row {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.cost-figure {
+  font-size: 1.375rem;
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+}
+
+.cost-cadence {
+  font-size: var(--font-xs);
+  color: var(--text-muted);
+}
+
+.cost-caption {
+  font-size: 11px;
+  color: var(--text-subtle);
+}
+
+/* Core Specs */
+.card-specs-table {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.spec-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--font-sm);
+}
+
+.spec-label {
+  color: var(--text-muted);
+  font-size: var(--font-xs);
+}
+
+.spec-value {
+  font-weight: var(--weight-medium);
+  color: var(--text-primary);
+  font-size: var(--font-sm);
+}
+
+/* Compact Main Detail: Predicted Metric Summary Strip */
+.card-summary-metrics-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-surface-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xs);
+  padding: 6px 10px;
+  font-size: var(--font-xs);
+}
+
+.summary-metric-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.summary-metric-k {
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.summary-metric-v {
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.summary-metric-v.warn {
+  color: var(--status-warn-text);
+}
+
+/* Click-to-Expand Toggle Button */
+.card-expand-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 7px 10px;
+  background-color: transparent;
+  border: 1px dashed var(--border-default);
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: var(--font-xs);
+  font-weight: var(--weight-medium);
+  color: var(--text-secondary);
+  transition: all 0.12s ease;
+}
+
+.card-expand-toggle-btn:hover {
+  background-color: var(--bg-surface-subtle);
+  border-color: var(--border-hover);
+  color: var(--primary-default);
+}
+
+.card-expand-toggle-btn.is-expanded {
+  background-color: var(--bg-surface-subtle);
+  border-style: solid;
+  border-color: var(--border-default);
+  color: var(--primary-default);
+}
+
+/* Expandable Points Panel */
+.card-expanded-points-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  background-color: #fafbfc;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-xs);
+  padding: var(--space-3) var(--space-4);
+  animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-2px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.points-subgroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.points-subgroup-title {
+  font-size: 11px;
+  font-weight: var(--weight-semibold);
+  color: var(--text-secondary);
+}
+
+.points-bullet-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-left: 0;
+}
+
+.points-bullet-list li {
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: var(--text-secondary);
+  position: relative;
+  padding-left: 12px;
+}
+
+.points-bullet-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--text-muted);
+}
+
+.points-bullet-list li.pro-point::before {
+  content: '';
+}
+
+.points-bullet-list li.con-point::before {
+  content: '';
+}
+
+.points-rationale-item {
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--text-secondary);
+  font-style: italic;
+  border-left: 2px solid var(--primary-default);
+  padding-left: 8px;
+}
+
+/* Action Buttons */
+.card-actions-row {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: var(--space-2);
+  margin-top: auto;
+  padding-top: var(--space-2);
+}
+
+.card-action-btn {
+  font-size: var(--font-xs);
+}

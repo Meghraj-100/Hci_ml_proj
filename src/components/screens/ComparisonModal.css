@@ -1,0 +1,81 @@
+.comparison-modal-card {
+  max-width: 860px;
+}
+
+.comparison-table-wrap {
+  overflow-x: auto;
+}
+
+.comparison-table {
+  min-width: 660px;
+}
+
+.spec-col-label {
+  width: 22%;
+  background-color: var(--bg-surface-subtle);
+  color: var(--text-muted);
+  font-size: var(--font-xs);
+  font-weight: var(--weight-medium);
+}
+
+.candidate-col-head {
+  width: 26%;
+  vertical-align: top;
+  padding: var(--space-3) var(--space-4);
+}
+
+.candidate-cat-sub {
+  font-size: var(--font-xs);
+  font-weight: var(--weight-medium);
+  color: var(--primary-default);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.table-inst-name {
+  font-size: var(--font-base);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+}
+
+.table-inst-prov {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.spec-row-name {
+  font-weight: var(--weight-medium);
+  color: var(--text-secondary);
+  background-color: #fafbfc;
+  border-right: 1px solid var(--border-default);
+  font-size: var(--font-xs);
+}
+
+.table-desc {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.35;
+  margin-top: 2px;
+}
+
+.price-compare-row {
+  background-color: #f8fafc;
+}
+
+.table-price {
+  font-size: var(--font-base);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+}
+
+.table-price-sub {
+  font-size: var(--font-xs);
+  color: var(--text-muted);
+  font-weight: var(--weight-regular);
+}
+
+.btn-sm {
+  height: 32px;
+  padding: 0 var(--space-3);
+  font-size: var(--font-xs);
+}

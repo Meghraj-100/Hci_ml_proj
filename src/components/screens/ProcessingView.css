@@ -1,0 +1,134 @@
+.processing-container {
+  max-width: 620px;
+  margin: var(--space-10) auto;
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  background-color: var(--bg-surface);
+}
+
+.processing-header {
+  text-align: left;
+}
+
+.processing-header h2 {
+  font-size: var(--font-lg);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+}
+
+.processing-subtext {
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-top: 4px;
+}
+
+/* Progress Section */
+.progress-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  background-color: var(--bg-surface-subtle);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: var(--space-4);
+}
+
+.progress-metrics-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--font-xs);
+}
+
+.progress-status-label {
+  font-weight: var(--weight-medium);
+  color: var(--text-primary);
+}
+
+.progress-count {
+  color: var(--text-muted);
+  font-weight: var(--weight-medium);
+}
+
+.progress-bar-track {
+  width: 100%;
+  height: 6px;
+  background-color: var(--border-default);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: var(--primary-default);
+  border-radius: 3px;
+  transition: width 0.25s ease;
+}
+
+/* Stages */
+.stages-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: 0 4px;
+}
+
+.stage-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--font-sm);
+  color: var(--text-muted);
+}
+
+.stage-item.is-active {
+  color: var(--text-primary);
+  font-weight: var(--weight-medium);
+}
+
+.stage-item.is-completed {
+  color: var(--text-secondary);
+}
+
+.stage-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  flex-shrink: 0;
+}
+
+.stage-icon-done {
+  color: var(--text-primary);
+}
+
+.stage-icon-spinner {
+  color: var(--primary-default);
+  animation: spin 1s linear infinite;
+}
+
+.stage-dot-pending {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--border-hover);
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.processing-footer {
+  border-top: 1px solid var(--border-default);
+  padding-top: var(--space-4);
+}
+
+.processing-meta {
+  font-size: var(--font-xs);
+  color: var(--text-muted);
+  line-height: 1.4;
+}
