@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { Activity, ArrowRight, Gauge, Network, ScanSearch, ServerCog, ShieldCheck, Sparkles } from 'lucide-react';
 import './LandingView.css';
 
 interface LandingViewProps {
@@ -10,19 +10,17 @@ interface LandingViewProps {
 export const LandingView: React.FC<LandingViewProps> = ({ onStart, onSelectPreset }) => {
   return (
     <div className="landing-page">
-      {/* Hero Section */}
       <section className="hero-section">
         <div className="hero-kicker">
-          <span>Cloud infrastructure sizing system</span>
+          <Sparkles size={14} />
+          <span>Model-assisted infrastructure planning</span>
         </div>
 
-        <h1 className="hero-headline">
-          Find the right cloud server for your workload
-        </h1>
+        <h1 className="hero-headline">Size cloud capacity with confidence</h1>
 
         <p className="hero-supporting">
-          Specify your application&apos;s expected request rate and network throughput. The recommendation
-          engine evaluates compatible candidate instances across compute, memory, and latency models.
+          Bring together demand, network activity, and budget constraints. The recommendation engine turns
+          them into a clear shortlist of cloud servers.
         </p>
 
         <div className="hero-cta-group">
@@ -35,14 +33,19 @@ export const LandingView: React.FC<LandingViewProps> = ({ onStart, onSelectPrese
             <span>How it works</span>
           </a>
         </div>
+
+        <div className="hero-signal-grid" aria-label="Evaluation signals">
+          <div className="hero-signal"><Activity size={16} /><span><strong>3</strong> demand windows</span></div>
+          <div className="hero-signal"><Network size={16} /><span><strong>2</strong> network signals</span></div>
+          <div className="hero-signal"><ServerCog size={16} /><span><strong>14</strong> candidate servers</span></div>
+        </div>
       </section>
 
-      {/* Sizing Trade-offs (Engineering Context) */}
-      <section className="problem-panel panel">
+      <section className="problem-panel panel" aria-label="Sizing decision trade-offs">
         <div className="problem-grid">
           <div className="problem-column">
-            <h3 className="problem-head-under">Risks of under-provisioning</h3>
-            <p className="problem-intro">Selecting an undersized instance leads to operational failures:</p>
+            <div className="problem-heading"><span className="problem-icon"><Gauge size={18} /></span><h3>Risks of under-provisioning</h3></div>
+            <p className="problem-intro">Avoid capacity decisions that leave your application exposed:</p>
             <ul className="problem-list">
               <li>High CPU saturation and thread starvation during bursts</li>
               <li>Out-of-memory (OOM) killer terminating critical processes</li>
@@ -53,8 +56,8 @@ export const LandingView: React.FC<LandingViewProps> = ({ onStart, onSelectPrese
           <div className="problem-divider" aria-hidden="true" />
 
           <div className="problem-column">
-            <h3 className="problem-head-over">Costs of over-provisioning</h3>
-            <p className="problem-intro">Selecting an unnecessarily large instance wastes cloud capital:</p>
+            <div className="problem-heading"><span className="problem-icon"><ShieldCheck size={18} /></span><h3>Costs of over-provisioning</h3></div>
+            <p className="problem-intro">Keep spend aligned with the workload you actually expect:</p>
             <ul className="problem-list">
               <li>Unjustified monthly infrastructure expenditure</li>
               <li>Idle vCPU cycles and unutilized memory allocation</li>
@@ -64,16 +67,16 @@ export const LandingView: React.FC<LandingViewProps> = ({ onStart, onSelectPrese
         </div>
       </section>
 
-      {/* Three-Step Workflow */}
       <section id="how-it-works" className="steps-section">
         <div className="section-header">
-          <h2>Three-step evaluation workflow</h2>
-          <p>A structured decision process designed to remove intuition and guesswork from server selection.</p>
+          <span className="section-eyebrow">Recommendation flow</span>
+          <h2>A clearer way to choose infrastructure</h2>
+          <p>Use a compact evaluation flow that turns operational inputs into a defensible sizing decision.</p>
         </div>
 
         <div className="steps-grid">
           <div className="step-card panel">
-            <div className="step-card-num">01</div>
+            <div className="step-card-top"><span className="step-card-icon"><Activity size={20} /></span><span className="step-card-num">01</span></div>
             <h3>Describe workload</h3>
             <p>
               Input anticipated request volume over 1, 5, and 15-minute intervals, along with average network
@@ -82,7 +85,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onStart, onSelectPrese
           </div>
 
           <div className="step-card panel">
-            <div className="step-card-num">02</div>
+            <div className="step-card-top"><span className="step-card-icon"><ScanSearch size={20} /></span><span className="step-card-num">02</span></div>
             <h3>Evaluate candidates</h3>
             <p>
               Candidate AWS and Azure instances are benchmarked against your workload using independent
@@ -91,7 +94,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onStart, onSelectPrese
           </div>
 
           <div className="step-card panel">
-            <div className="step-card-num">03</div>
+            <div className="step-card-top"><span className="step-card-icon"><ServerCog size={20} /></span><span className="step-card-num">03</span></div>
             <h3>Compare recommendations</h3>
             <p>
               Inspect the Top 3 options: Best balanced, Cheapest suitable, and Best performance. Detailed
@@ -101,12 +104,12 @@ export const LandingView: React.FC<LandingViewProps> = ({ onStart, onSelectPrese
         </div>
       </section>
 
-      {/* Quick Start Presets */}
       <section className="presets-banner panel">
         <div className="presets-banner-inner">
           <div>
-            <h3>Sample workload presets</h3>
-            <p>Select a representative workload scenario to immediately test the recommendation flow:</p>
+            <span className="section-eyebrow">Quick start</span>
+            <h3>Start from a representative workload</h3>
+            <p>Choose a scenario, then refine the inputs to match your application</p>
           </div>
           <div className="presets-button-row">
             <button

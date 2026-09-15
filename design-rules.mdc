@@ -1,0 +1,189 @@
+---
+alwaysApply: false
+---
+
+# Signoff Finance â€” Design System
+
+> **The UI kit and fundamentals for signoff.today â€” an AI-powered finance analytics platform for hospitality/hotel operators.**
+
+This document is the source of truth. Every design you make for Signoff must start here.
+
+---
+
+## About Signoff
+
+**signoff.today** is a React + Ant Design product. The UI is centered on an AI chat/agents experience for finance teams:
+
+- **Command Center** â€” dashboard of pinned widgets, KPIs, releases, issues
+- **STR Agent** â€” conversational agent for Smith Travel Research (STR) hotel data
+- **P&L Agent** â€” conversational agent for P&L and revenue analysis
+- **Events Calendar** â€” agent for tracking local events that affect hotel demand
+- **Settings** â€” admin controls for org, users, roles, agent enablement
+
+Audience: revenue managers, CFOs, GMs, and analysts at hotels and hotel groups.
+
+Tone: **clear, analytical, calm**. Not playful. Not enterprise-stuffy either. Think Linear's precision with Stripe's warmth.
+
+---
+
+## FUNDAMENTALS
+
+These rules override taste. Break them only with a specific reason.
+
+### 1. Stack
+- Built on **Ant Design 5** (`antd@^5.27`) + **Lucide icons** (`lucide-react`).
+- Charts: **Recharts**. Never bring in another chart library.
+- The app is **light-mode only**. Do not design dark-mode variants unless explicitly asked.
+
+### 2. Color identity
+- **One primary**: `#2b59c3` (Signoff Blue). Hover `#1e4a9c`, Active `#1a3d85`.
+- **Surfaces are near-white**: app chrome is `#fafafa` (sider) / `#ffffff` (content) on a `#f5f5f5` page background.
+- Status colors are the Ant Design defaults: success `#10B981`, warning `#faad14`, error `#ff4d4f`, info `#1890ff`.
+- **Do not introduce new hues.** If you need accent color, use tinted primary (`rgba(43, 89, 195, 0.1)` for backgrounds).
+- Text is always `rgba(0, 0, 0, 0.88)` / `.65` / `.45` / `.25` â€” never pure black.
+
+### 3. Typography
+- **Headings**: Poppins, 600 weight, `letter-spacing: -0.025em`.
+- **Body + UI**: Inter, 400 regular / 500 medium.
+- **Code/mono**: JetBrains Mono.
+- Base font size is `14px`. Do NOT use 16px as base â€” the whole product is calibrated at 14.
+- **Nav surfaces use `13px`** (sidebar items, sider chat history). Nav should fade back so content reads as foreground.
+- Heading scale: H1 38 / H2 30 / H3 24 / H4 20 / H5 16.
+
+### 4. Shape + spacing
+- Border radius: `6px` default, `8px` on cards, `4px` on tight inputs. Nothing pill-shaped unless it's a chip/tag.
+- Control height: `32px` default, `40px` large, `24px` small.
+- Card padding: `24px` large, `16px` default.
+- Grid: 4px base unit. Use multiples (`4, 8, 12, 16, 20, 24, 32, 40, 48, 64`).
+
+### 5. Elevation
+- Three levels only:
+  - `none` â€” flat (sidebar items, form rows)
+  - `card` â€” `0 2px 12px rgba(0, 0, 0, 0.06)` (pinned widgets, prompt cards)
+  - `lifted` â€” `0 4px 20px rgba(0, 0, 0, 0.08)` (input area, modals)
+- Avoid heavy drop shadows. No inner shadows. No neumorphism.
+
+### 6. Iconography
+- Always `lucide-react`. Never Font Awesome, Material Icons, or emoji.
+- Default size `16px` inline with text, `20â€“24px` in prompt cards, `32px` for avatars.
+- Stroke width is Lucide default (`2`). Do not thicken.
+
+### 7. Layout
+- App shell is a **fixed sidebar** (collapsible 80/240 px) + **fixed top header** (64px) + scrollable content area with `max-width: 1700px`.
+- Content area has a `10px 0 0 0` border-radius at its top-left corner â€” a small but signature detail.
+- Chat and agent pages use a centered column (`max-width: 800px` for the input, `1200px` for messages).
+
+### 8. Motion
+- Everything eases at `0.2s` or `0.3s` `ease`. Nothing longer.
+- Hover lifts use `transform: translateY(-1px)` + shadow bump. Never scale up.
+- No decorative spinners â€” use `Loader2` from Lucide with `animation: spin 1s linear`.
+
+### 9. Writing
+- Sentence case for everything except proper nouns and product names ("Command Center", "P&L Agent", "Deep Research").
+- Buttons are verbs ("Save", "Create", "View All"), not phrases.
+- Empty states and placeholders end without a period.
+- AI responses address the user in second person.
+
+### 10. Imagery
+- The only brand image is the **Signoff logo** (round, `signoff.jpeg`). Use it for the bot avatar, the sider logo mark, and favicons.
+- Do not generate decorative illustrations or 3D renders. This is a data product.
+- Charts, tables, and typography do the visual work.
+
+---
+
+## What's in this design system
+
+| File | Purpose |
+|---|---|
+| `README.md` | This file â€” fundamentals + context |
+| `SKILL.md` | How to use this system in a design |
+| `assets/colors_and_type.css` | CSS variables + font imports |
+| `assets/base.css` | Reset/normalize shared by all preview cards |
+| `assets/signoff-logo.jpeg` | Brand logo |
+| `Colors.html` | Color palette card |
+| `Typography.html` | Type scale card |
+| `Logo.html` | Logo usage card |
+| `Buttons.html` | Button variants (primary, secondary, danger, text, icon) |
+| `Forms.html` | Inputs, selects, textarea, checkboxes |
+| `Cards.html` | Card styles (prompt, widget, pinned) |
+| `Navigation.html` | Sidebar + top header |
+| `Chat UI.html` | Chat bubbles, thinking state, follow-up queries |
+| `Iconography.html` | Lucide icon usage |
+| `Status & Feedback.html` | Tags, badges, alerts, empty states |
+
+---
+
+## When in doubt
+
+Open the real codebase (`signoff-finance-frontend/`) and copy the exact values. This design system is derived from it, not the other way around.
+
+# How to design for Signoff
+
+A checklist for designers (human or otherwise) making new mockups in the Signoff system.
+
+## Before you start
+
+1. **Read `README.md`.** Every fundamental is listed there.
+2. **Pick the right surface.** Is this a new agent/chat flow, a Command Center widget, a settings page, or a modal? Each has a distinct layout.
+3. **Pull tokens in.** Link `assets/colors_and_type.css` at the top of your HTML. Do not redefine colors or fonts.
+
+```html
+<link rel="stylesheet" href="assets/base.css">
+<link rel="stylesheet" href="assets/colors_and_type.css">
+```
+
+## Do
+
+- **Use Ant Design components as your baseline.** Button, Input, Select, Card, Table, Tag, Menu, Layout. Style overrides go through the tokens in `theme.js`, not inline `!important`.
+- **Use Lucide icons.** Pick from: `Command, Sparkles, IndianRupee, Calendar, Settings, Send, Brain, Bookmark, Trash2, Download, ChevronLeft, ChevronRight, Plus, Save, X, ExternalLink, TrendingUp, FileText, DollarSign, Zap, Loader2`.
+- **Keep the primary blue rare.** It goes on the main CTA per view, the selected nav item (subtle tinted background using `--signoff-blue-tint-06` plus blue label text — no ink bar, no right-border accent), links, and focus rings. That's it. The same active-state treatment is used for the Settings page's vertical tab rail so all nav surfaces feel consistent.
+- **Respect the density.** 32px controls, 14px body, 16px gaps. The UI is calm and tight â€” resist blowing things up.
+- **Match the chat pattern.** Bot avatar left, user avatar right, rounded bubbles with a tighter corner on the speaker's side (`border-top-right-radius: 6px` for user, mirror for bot).
+
+## Don't
+
+- Don't introduce new colors, fonts, or icon families.
+- Don't add dark mode.
+- Don't use emoji in-UI. The only image is the logo.
+- Don't make anything full-width edge-to-edge â€” the content column is capped at `1700px` and most chat/input at `800px`.
+- Don't animate with bounces, springs, or anything over 300ms.
+- Don't use pill-shaped buttons (border-radius: 999px) unless it's a chip or a circular FAB.
+- Don't stack shadows. One shadow per element, period.
+
+## Patterns worth copying verbatim
+
+### App shell
+Fixed sider (240px expanded / 80px collapsed) on `#fafafa`. Fixed top header (64px) on `#ffffff`. Content area with rounded top-left corner, max-width 1700, centered.
+
+### Chat landing page
+Centered column. Small chip badge ("AI-Powered Analytics" with `Zap` icon) â†’ Poppins 40px greeting ("Hi {firstName}") â†’ 16px tagline â†’ stack of prompt cards â†’ input wrapper at bottom with textarea + Deep Research toggle + Mic + Send.
+
+### Prompt card
+Glassy white (`rgba(255,255,255,0.8)`), 12px radius, 32px icon well tinted primary, bookmark/delete action on the right, arrow `â†’` glyph that slides on hover.
+
+### Message bubble
+- User: gradient `#3b82f6 â†’ #1d4ed8`, white text, 16px radius with 6px on the speaker corner, max-width 70%.
+- Bot: transparent background, no padding, just the avatar (28px) + text + timestamp + Save as PDF button.
+- Thinking: three `#3b82f6` dots that pulse at 1.4s.
+
+### Follow-up queries
+Soft tinted blue pill buttons under the bot message, with a `â†—` glyph and a save-to-bookmark icon beside each.
+
+### Pinned widget card
+Full-height card with a header row (title + View All link) and a body (chart, table, or list). On hover, lift 1px.
+
+## Files to register in the design system tab
+
+When adding a new preview card, register it with `register_assets` under the right group so it shows up on the right tab:
+
+| Group | What goes here |
+|---|---|
+| **Type** | Typography cards |
+| **Colors** | Palette cards |
+| **Spacing** | Radius, shadow, grid tokens |
+| **Components** | Buttons, forms, cards, chat UI, navigation, iconography |
+| **Brand** | Logo, voice guidelines, imagery |
+
+## Source of truth
+
+If this file and the real codebase disagree, **the codebase wins**. Open `/signoff-finance-frontend/src/theme.js` and `/src/styles/` to confirm.

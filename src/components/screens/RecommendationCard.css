@@ -7,11 +7,14 @@
   border: 1px solid var(--border-default);
   border-radius: var(--radius-md);
   position: relative;
-  transition: border-color 0.12s ease;
+  box-shadow: var(--shadow-card);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .recommendation-card:hover {
   border-color: var(--border-hover);
+  box-shadow: var(--shadow-elevated);
+  transform: translateY(-1px);
 }
 
 /* Primary Recommended Card Structural Difference */
@@ -21,7 +24,7 @@
 
 .recommendation-card.is-selected-card {
   border-color: var(--primary-default);
-  box-shadow: 0 0 0 1px var(--primary-default), var(--shadow-sm);
+  box-shadow: 0 0 0 1px var(--primary-default), var(--shadow-card);
 }
 
 /* Header */

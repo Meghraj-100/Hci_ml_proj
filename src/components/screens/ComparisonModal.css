@@ -59,7 +59,7 @@
 }
 
 .price-compare-row {
-  background-color: #f8fafc;
+  background-color: var(--bg-surface-subtle);
 }
 
 .table-price {

@@ -51,7 +51,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <label htmlFor={id} className="form-label">
           <span>{label}</span>
-          {required && <span style={{ color: 'var(--status-danger)' }} aria-hidden="true">*</span>}
+          {required && <span style={{ color: 'var(--status-danger-text)' }} aria-hidden="true">*</span>}
           {tooltipText && <FieldTooltip content={tooltipText} id={`${id}-tip`} />}
         </label>
       </div>

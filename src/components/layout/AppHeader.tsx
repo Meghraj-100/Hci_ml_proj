@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Server, Info, RefreshCw, X } from 'lucide-react';
+import { Info, RefreshCw, X } from 'lucide-react';
 import './AppHeader.css';
 
 interface AppHeaderProps {
@@ -14,14 +14,9 @@ export const AppHeader: React.FC<AppHeaderProps> = ({ onReset, onNavigateHome })
     <>
       <header className="app-header">
         <div className="app-container header-inner">
-          <button type="button" className="brand-button" onClick={onNavigateHome}>
-            <div className="brand-icon">
-              <Server size={18} />
-            </div>
-            <div className="brand-text">
-              <span className="brand-title">Cloud Server Recommendation System</span>
-              <span className="brand-subtitle">HCI + Machine Learning Academic Project</span>
-            </div>
+          <button type="button" className="workspace-button" onClick={onNavigateHome}>
+            <span className="workspace-overline">Infrastructure planning</span>
+            <span className="workspace-title">Recommendation workspace</span>
           </button>
 
           <div className="header-actions">
@@ -32,7 +27,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({ onReset, onNavigateHome })
               title="View HCI & ML Architecture notes"
             >
               <Info size={16} />
-              <span>HCI Architecture</span>
+              <span>Design Architecture</span>
             </button>
 
             <button
@@ -59,7 +54,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({ onReset, onNavigateHome })
           >
             <div className="modal-header">
               <div>
-                <h3 id="arch-modal-title">HCI + Machine Learning Design Architecture</h3>
+                <h3 id="arch-modal-title">Design Architecture</h3>
                 <p className="modal-subtitle">Academic project system separation & Norman's model</p>
               </div>
               <button
@@ -74,7 +69,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({ onReset, onNavigateHome })
 
             <div className="modal-body">
               <div className="arch-section">
-                <h4>HCI Abstraction Layer</h4>
+                <h4>Design Abstraction Layer</h4>
                 <p>
                   To eliminate cognitive overload and bridge the <strong>Gulf of Execution</strong>,
                   the frontend hides internal ML complexity (raw F1–F9 feature vectors, training dataset filenames like <code>mmc2–mmc7</code>,

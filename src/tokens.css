@@ -1,92 +1,76 @@
-/* ==========================================================================
-   DESIGN TOKENS — CLOUD INFRASTRUCTURE & DEVOPS CONSOLE
-   Palette: Cool slate neutrals with technical blue (#2563EB) accent.
-   Clean, high-density, calm, human-designed.
-   ========================================================================== */
-
+/* Product tokens aligned to the supplied light analytics design system. */
 :root {
-  /* Surface & Background (Cool neutral enterprise palette) */
-  --bg-app: #f8fafc;              /* Slate 50 */
-  --bg-surface: #ffffff;          /* Pure White */
-  --bg-surface-subtle: #f1f5f9;   /* Slate 100 */
-  --bg-surface-muted: #e2e8f0;    /* Slate 200 */
+  --bg-app: #f5f5f5;
+  --bg-surface: #ffffff;
+  --bg-surface-subtle: #fafafa;
+  --bg-surface-muted: #f0f0f0;
   --bg-surface-elevated: #ffffff;
 
-  /* Typography Colors */
-  --text-primary: #0f172a;        /* Slate 900: High contrast, sharp text */
-  --text-secondary: #334155;      /* Slate 700: Labels, secondary headers */
-  --text-muted: #64748b;          /* Slate 500: Helper text, metadata */
-  --text-subtle: #94a3b8;         /* Slate 400: Placeholders, units */
+  --text-primary: rgba(0, 0, 0, 0.88);
+  --text-secondary: rgba(0, 0, 0, 0.65);
+  --text-muted: rgba(0, 0, 0, 0.45);
+  --text-subtle: rgba(0, 0, 0, 0.25);
   --text-inverse: #ffffff;
 
-  /* Borders & Dividers (Clean 1px hairline definition) */
-  --border-subtle: #f1f5f9;       /* Slate 100 */
-  --border-default: #e2e8f0;      /* Slate 200 */
-  --border-hover: #cbd5e1;        /* Slate 300 */
-  --border-focus: #2563eb;        /* Blue 600 */
+  --border-subtle: #f0f0f0;
+  --border-default: #e8e8e8;
+  --border-hover: #d9d9d9;
+  --border-focus: #2b59c3;
 
-  /* Technical Ops Accent (Precise utility blue #2563EB) */
-  --primary-default: #2563eb;     /* Blue 600 */
-  --primary-hover: #1d4ed8;       /* Blue 700 */
-  --primary-active: #1e40af;      /* Blue 800 */
-  --primary-subtle: #eff6ff;      /* Blue 50 */
-  --primary-border: #bfdbfe;      /* Blue 200 */
+  --primary-default: #2b59c3;
+  --primary-hover: #1e4a9c;
+  --primary-active: #1a3d85;
+  --primary-subtle: rgba(43, 89, 195, 0.06);
+  --primary-tint: rgba(43, 89, 195, 0.1);
+  --primary-border: rgba(43, 89, 195, 0.24);
   --primary-contrast: #ffffff;
 
-  /* Actionable State Colors (Used ONLY when action or warning is genuinely required) */
-  --status-safe-text: #166534;     /* Green 800 */
-  --status-safe-bg: #f0fdf4;       /* Green 50 */
-  --status-safe-border: #bbf7d0;
+  --status-safe-text: #10b981;
+  --status-safe-bg: rgba(16, 185, 129, 0.08);
+  --status-safe-border: rgba(16, 185, 129, 0.25);
+  --status-warn-text: #ad6800;
+  --status-warn-bg: #fffbe6;
+  --status-warn-border: #faad14;
+  --status-danger-text: #ff4d4f;
+  --status-danger-bg: #fff2f0;
+  --status-danger-border: #ffccc7;
 
-  --status-warn-text: #9a3412;     /* Amber 800 */
-  --status-warn-bg: #fffbeb;       /* Amber 50 */
-  --status-warn-border: #fde68a;
-
-  --status-danger-text: #991b1b;   /* Red 800 */
-  --status-danger-bg: #fef2f2;     /* Red 50 */
-  --status-danger-border: #fecaca;
-
-  /* Typography Stack: High-legibility sans-serif with tabular numeric alignment */
+  --font-display: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --font-mono: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-  /* Type Scale */
-  --font-xs: 0.75rem;      /* 12px */
-  --font-sm: 0.8125rem;    /* 13px */
-  --font-base: 0.875rem;   /* 14px */
-  --font-md: 1rem;         /* 16px */
-  --font-lg: 1.125rem;     /* 18px */
-  --font-xl: 1.375rem;     /* 22px */
-  --font-2xl: 1.75rem;     /* 28px */
+  --font-xs: 0.75rem;
+  --font-sm: 0.8125rem;
+  --font-base: 0.875rem;
+  --font-md: 1rem;
+  --font-lg: 1.25rem;
+  --font-xl: 1.875rem;
+  --font-2xl: 2.375rem;
 
-  /* Font Weights */
   --weight-regular: 400;
   --weight-medium: 500;
   --weight-semibold: 600;
   --weight-bold: 700;
 
-  /* Spacing Scale (8px baseline system with generous 24-32px card pads) */
-  --space-1: 0.25rem;   /* 4px */
-  --space-2: 0.5rem;    /* 8px */
-  --space-3: 0.75rem;   /* 12px */
-  --space-4: 1rem;      /* 16px */
-  --space-5: 1.25rem;   /* 20px */
-  --space-6: 1.5rem;    /* 24px */
-  --space-8: 2rem;      /* 32px */
-  --space-10: 2.5rem;   /* 40px */
-  --space-12: 3rem;     /* 48px */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
 
-  /* Functional Radii (Refined, architectural, never pill-shaped) */
-  --radius-xs: 2px;
-  --radius-sm: 4px;
-  --radius-md: 6px;
-  --radius-lg: 8px;
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
 
-  /* Crisp Hairline Shadows */
-  --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.04);
-  --shadow-card: 0 1px 3px 0 rgba(15, 23, 42, 0.06), 0 1px 2px -1px rgba(15, 23, 42, 0.04);
-  --shadow-modal: 0 8px 24px -4px rgba(15, 23, 42, 0.12), 0 2px 6px -2px rgba(15, 23, 42, 0.06);
-
-  /* Clean Accessible Focus Indicator */
-  --focus-ring: 0 0 0 1px #ffffff, 0 0 0 3px var(--primary-default);
+  --shadow-sm: none;
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.06);
+  --shadow-elevated: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --shadow-modal: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --focus-ring: 0 0 0 3px rgba(43, 89, 195, 0.22);
 }

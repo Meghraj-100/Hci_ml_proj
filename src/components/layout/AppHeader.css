@@ -10,13 +10,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 54px;
+  height: 64px;
 }
 
-.brand-button {
+.workspace-button {
   display: flex;
-  align-items: center;
-  gap: var(--space-3);
+  flex-direction: column;
+  align-items: flex-start;
   background: none;
   border: none;
   text-align: left;
@@ -24,34 +24,19 @@
   padding: 0;
 }
 
-.brand-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  border-radius: var(--radius-sm);
-  background-color: var(--bg-surface-subtle);
-  color: var(--text-primary);
-  border: 1px solid var(--border-default);
-}
-
-.brand-text {
-  display: flex;
-  flex-direction: column;
-}
-
-.brand-title {
-  font-size: var(--font-base);
-  font-weight: var(--weight-semibold);
-  color: var(--text-primary);
-  letter-spacing: -0.01em;
-}
-
-.brand-subtitle {
-  font-size: var(--font-xs);
+.workspace-overline {
   color: var(--text-muted);
-  font-weight: var(--weight-regular);
+  font-size: 11px;
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.workspace-title {
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: var(--font-md);
+  font-weight: var(--weight-semibold);
 }
 
 .header-actions {
@@ -180,7 +165,7 @@
 }
 
 @media (max-width: 640px) {
-  .brand-subtitle {
-    display: none;
-  }
+  .workspace-overline { display: none; }
+  .header-btn span { display: none; }
+  .header-btn { width: 32px; padding: 0; }
 }
