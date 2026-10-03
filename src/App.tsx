@@ -9,7 +9,6 @@ import { WorkloadForm } from './components/screens/WorkloadForm';
 import { ProcessingView } from './components/screens/ProcessingView';
 import { RecommendationsView } from './components/screens/RecommendationsView';
 import { EmptyStateView } from './components/screens/EmptyStateView';
-import { BrainCircuit, Grid2X2, History, ServerCog, SlidersHorizontal } from 'lucide-react';
 import './App.css';
 
 const DEFAULT_WORKLOAD: WorkloadInput = {
@@ -151,76 +150,41 @@ export const App: React.FC = () => {
     setCurrentStep(1);
   };
 
-  const isOverviewActive = view === 'landing';
-  const isRecommendationActive = view !== 'landing';
-
   return (
     <div className="app-shell">
-      <div className="app-frame">
-        <aside className="app-sidebar" aria-label="Application navigation">
-          <div className="sidebar-brand">
-            <span className="sidebar-brand-mark"><ServerCog size={18} /></span>
-            <span className="sidebar-brand-copy">
-              <span className="sidebar-brand-title">CloudSizer</span>
-              <span className="sidebar-brand-subtitle">ML infrastructure planner</span>
-            </span>
-          </div>
-          <span className="sidebar-group-label">Workspace</span>
-          <nav className="sidebar-nav">
-            <button type="button" className={`sidebar-nav-item ${isOverviewActive ? 'is-active' : ''}`} onClick={handleNavigateHome}>
-              <Grid2X2 size={16} /><span>Overview</span>
-            </button>
-            <button type="button" className={`sidebar-nav-item ${isRecommendationActive ? 'is-active' : ''}`} onClick={handleEditInputs}>
-              <SlidersHorizontal size={16} /><span>New recommendation</span>
-            </button>
-            <button type="button" className="sidebar-nav-item" onClick={handleNavigateHome}>
-              <History size={16} /><span>Recent evaluations</span>
-            </button>
-          </nav>
-          <div className="sidebar-footer">
-            <BrainCircuit size={16} className="sidebar-footer-icon" />
-            <span className="sidebar-footnote">Model-assisted sizing</span>
-          </div>
-        </aside>
+      <AppHeader onReset={handleReset} onNavigateHome={handleNavigateHome} />
+      {view !== 'landing' && (
+        <StepIndicator
+          currentStep={currentStep}
+          onStepClick={(s) => {
+            if (s === 1) handleEditInputs();
+            if (s === 3 && recommendResponse?.success) {
+              setView('results');
+              setCurrentStep(3);
+            }
+          }}
+        />
+      )}
 
-        <div className="app-workspace">
-          <AppHeader onReset={handleReset} onNavigateHome={handleNavigateHome} />
-          {view !== 'landing' && (
-            <StepIndicator
-              currentStep={currentStep}
-              onStepClick={(s) => {
-                if (s === 1) handleEditInputs();
-                if (s === 3 && recommendResponse?.success) {
-                  setView('results');
-                  setCurrentStep(3);
-                }
-              }}
-            />
-          )}
-
-          <main className="app-main">
-            <div className="app-container">
-              {view === 'landing' && <LandingView onStart={handleStart} onSelectPreset={handleSelectPreset} />}
-              {view === 'input' && <WorkloadForm initialValues={workload} onSubmit={handleFormSubmit} onReset={() => setWorkload(DEFAULT_WORKLOAD)} />}
-              {view === 'processing' && <ProcessingView currentStageIndex={evalProgress.stageIndex} evaluatedCount={evalProgress.count} totalServers={evalProgress.total} />}
-              {view === 'results' && recommendResponse && <RecommendationsView recommendations={recommendResponse.recommendations} workload={workload} compromiseNote={recommendResponse.compromiseExplanation} onEditInputs={handleEditInputs} onReset={handleReset} />}
-              {view === 'empty' && <EmptyStateView reason={recommendResponse?.emptyStateReason} cheapestSuitablePrice={recommendResponse?.cheapestSuitablePrice} onAdjustBudget={handleAdjustBudget} onEditRequirements={handleEditInputs} />}
-            </div>
-          </main>
-
-          <footer className="app-footer">
-            <div className="app-container footer-inner">
-              <div className="footer-left">
-                <span className="footer-title">CloudSizer</span>
-                <span className="footer-desc">Machine learning assisted infrastructure planning</span>
-              </div>
-              <div className="footer-right">
-                <span className="footer-meta">Connected to <code>POST /recommend</code></span>
-              </div>
-            </div>
-          </footer>
+      <main className="app-main">
+        <div className="app-container">
+          {view === 'landing' && <LandingView onStart={handleStart} onSelectPreset={handleSelectPreset} />}
+          {view === 'input' && <WorkloadForm initialValues={workload} onSubmit={handleFormSubmit} onReset={() => setWorkload(DEFAULT_WORKLOAD)} />}
+          {view === 'processing' && <ProcessingView currentStageIndex={evalProgress.stageIndex} evaluatedCount={evalProgress.count} totalServers={evalProgress.total} />}
+          {view === 'results' && recommendResponse && <RecommendationsView recommendations={recommendResponse.recommendations} workload={workload} compromiseNote={recommendResponse.compromiseExplanation} onEditInputs={handleEditInputs} onReset={handleReset} />}
+          {view === 'empty' && <EmptyStateView reason={recommendResponse?.emptyStateReason} cheapestSuitablePrice={recommendResponse?.cheapestSuitablePrice} onAdjustBudget={handleAdjustBudget} onEditRequirements={handleEditInputs} />}
         </div>
-      </div>
+      </main>
+
+      <footer className="app-footer">
+        <div className="app-container footer-inner">
+          <div className="footer-left">
+            <span className="footer-title">CloudSizer</span>
+            <span className="footer-desc">Machine learning assisted infrastructure planning</span>
+          </div>
+
+        </div>
+      </footer>
     </div>
   );
 };

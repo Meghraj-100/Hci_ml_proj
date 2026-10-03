@@ -84,9 +84,9 @@ a:hover {
 
 /* Main content width */
 .app-container {
-  max-width: 1700px;
+  max-width: 1140px;
   margin: 0 auto;
-  padding: 0 var(--space-6);
+  padding: 0 clamp(24px, 5vw, 64px);
 }
 
 .sr-only {

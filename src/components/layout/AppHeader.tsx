@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Info, RefreshCw, X } from 'lucide-react';
+import { Info, RefreshCw, ServerCog, X } from 'lucide-react';
 import './AppHeader.css';
 
 interface AppHeaderProps {
@@ -14,9 +14,14 @@ export const AppHeader: React.FC<AppHeaderProps> = ({ onReset, onNavigateHome })
     <>
       <header className="app-header">
         <div className="app-container header-inner">
-          <button type="button" className="workspace-button" onClick={onNavigateHome}>
-            <span className="workspace-overline">Infrastructure planning</span>
-            <span className="workspace-title">Recommendation workspace</span>
+          <button type="button" className="brand-button" onClick={onNavigateHome}>
+            <div className="brand-icon">
+              <ServerCog size={18} />
+            </div>
+            <div className="brand-text">
+              <span className="brand-title">CloudSizer</span>
+              <span className="brand-subtitle">ML infrastructure planner</span>
+            </div>
           </button>
 
           <div className="header-actions">
