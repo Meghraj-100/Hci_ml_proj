@@ -1,0 +1,962 @@
+{
+  "cpu": {
+    "target": "cpu",
+    "selected_model": "RandomForest",
+    "feature_names": [
+      "F1_Jobs_1Min",
+      "F2_Jobs_5Min",
+      "F3_Jobs_15Min",
+      "F4_Mem_GB",
+      "F5_Disk_GB",
+      "F6_Num_CPU",
+      "F7_CPU_Speed",
+      "F8_Avg_Receive_Kbps",
+      "F9_Avg_Transmit_Kbps"
+    ],
+    "training_samples": 25697,
+    "test_samples": 2450,
+    "classes": [
+      "High",
+      "Low",
+      "Medium",
+      "Very Low"
+    ],
+    "metrics": {
+      "algorithm": "RandomForest",
+      "accuracy": 0.9681632653061224,
+      "precision_macro": 0.9399059256055363,
+      "recall_macro": 0.7396554360214604,
+      "f1_macro": 0.8105550506371364,
+      "f1_weighted": 0.9665848939647239,
+      "confusion_matrix": [
+        [
+          6,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          100,
+          0,
+          50
+        ],
+        [
+          0,
+          5,
+          4,
+          0
+        ],
+        [
+          0,
+          22,
+          0,
+          2262
+        ]
+      ],
+      "classes": [
+        "High",
+        "Low",
+        "Medium",
+        "Very Low"
+      ]
+    },
+    "all_candidate_metrics": {
+      "RandomForest": {
+        "algorithm": "RandomForest",
+        "accuracy": 0.9681632653061224,
+        "precision_macro": 0.9399059256055363,
+        "recall_macro": 0.7396554360214604,
+        "f1_macro": 0.8105550506371364,
+        "f1_weighted": 0.9665848939647239,
+        "confusion_matrix": [
+          [
+            6,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            100,
+            0,
+            50
+          ],
+          [
+            0,
+            5,
+            4,
+            0
+          ],
+          [
+            0,
+            22,
+            0,
+            2262
+          ]
+        ],
+        "classes": [
+          "High",
+          "Low",
+          "Medium",
+          "Very Low"
+        ]
+      },
+      "ExtraTrees": {
+        "algorithm": "ExtraTrees",
+        "accuracy": 0.963265306122449,
+        "precision_macro": 0.8418911802865781,
+        "recall_macro": 0.7367847413337781,
+        "f1_macro": 0.7820508046536718,
+        "f1_weighted": 0.9622039715667551,
+        "confusion_matrix": [
+          [
+            6,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            99,
+            1,
+            50
+          ],
+          [
+            0,
+            5,
+            4,
+            0
+          ],
+          [
+            0,
+            32,
+            1,
+            2251
+          ]
+        ],
+        "classes": [
+          "High",
+          "Low",
+          "Medium",
+          "Very Low"
+        ]
+      },
+      "GradientBoosting": {
+        "algorithm": "GradientBoosting",
+        "accuracy": 0.9644897959183674,
+        "precision_macro": 0.8408896146007041,
+        "recall_macro": 0.6532953187112557,
+        "f1_macro": 0.7166755868249448,
+        "f1_weighted": 0.9626902563202505,
+        "confusion_matrix": [
+          [
+            3,
+            1,
+            3,
+            0
+          ],
+          [
+            0,
+            96,
+            0,
+            54
+          ],
+          [
+            0,
+            4,
+            5,
+            0
+          ],
+          [
+            0,
+            25,
+            0,
+            2259
+          ]
+        ],
+        "classes": [
+          "High",
+          "Low",
+          "Medium",
+          "Very Low"
+        ]
+      },
+      "DecisionTree": {
+        "algorithm": "DecisionTree",
+        "accuracy": 0.9506122448979591,
+        "precision_macro": 0.7329937373488614,
+        "recall_macro": 0.6111554499207739,
+        "f1_macro": 0.6569891334051836,
+        "f1_weighted": 0.9492053846013574,
+        "confusion_matrix": [
+          [
+            4,
+            0,
+            3,
+            0
+          ],
+          [
+            0,
+            84,
+            2,
+            64
+          ],
+          [
+            0,
+            5,
+            3,
+            1
+          ],
+          [
+            0,
+            45,
+            1,
+            2238
+          ]
+        ],
+        "classes": [
+          "High",
+          "Low",
+          "Medium",
+          "Very Low"
+        ]
+      },
+      "KNN": {
+        "algorithm": "KNN",
+        "accuracy": 0.9612244897959183,
+        "precision_macro": 0.9187070664788187,
+        "recall_macro": 0.6777863953520696,
+        "f1_macro": 0.7347567296659926,
+        "f1_weighted": 0.9596353021971361,
+        "confusion_matrix": [
+          [
+            6,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            97,
+            0,
+            53
+          ],
+          [
+            0,
+            7,
+            2,
+            0
+          ],
+          [
+            0,
+            34,
+            0,
+            2250
+          ]
+        ],
+        "classes": [
+          "High",
+          "Low",
+          "Medium",
+          "Very Low"
+        ]
+      },
+      "LogisticRegression": {
+        "algorithm": "LogisticRegression",
+        "accuracy": 0.9489795918367347,
+        "precision_macro": 0.645219728144158,
+        "recall_macro": 0.5708925444083062,
+        "f1_macro": 0.602952302973017,
+        "f1_weighted": 0.9431280935942824,
+        "confusion_matrix": [
+          [
+            6,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            66,
+            0,
+            84
+          ],
+          [
+            0,
+            9,
+            0,
+            0
+          ],
+          [
+            0,
+            31,
+            0,
+            2253
+          ]
+        ],
+        "classes": [
+          "High",
+          "Low",
+          "Medium",
+          "Very Low"
+        ]
+      },
+      "NaiveBayes": {
+        "algorithm": "NaiveBayes",
+        "accuracy": 0.5604081632653061,
+        "precision_macro": 0.2872173156697444,
+        "recall_macro": 0.5492214994579268,
+        "f1_macro": 0.2426997666239964,
+        "f1_weighted": 0.6717727076258232,
+        "confusion_matrix": [
+          [
+            6,
+            1,
+            0,
+            0
+          ],
+          [
+            30,
+            119,
+            1,
+            0
+          ],
+          [
+            4,
+            5,
+            0,
+            0
+          ],
+          [
+            172,
+            862,
+            2,
+            1248
+          ]
+        ],
+        "classes": [
+          "High",
+          "Low",
+          "Medium",
+          "Very Low"
+        ]
+      }
+    },
+    "training_timestamp": "2026-10-03T07:50:40.635665+00:00",
+    "sklearn_version": "1.6.1"
+  },
+  "memory": {
+    "target": "memory",
+    "selected_model": "ExtraTrees",
+    "feature_names": [
+      "F1_Jobs_1Min",
+      "F2_Jobs_5Min",
+      "F3_Jobs_15Min",
+      "F4_Mem_GB",
+      "F5_Disk_GB",
+      "F6_Num_CPU",
+      "F7_CPU_Speed",
+      "F8_Avg_Receive_Kbps",
+      "F9_Avg_Transmit_Kbps"
+    ],
+    "training_samples": 25697,
+    "test_samples": 2450,
+    "classes": [
+      "High",
+      "Low",
+      "Medium",
+      "Very Low"
+    ],
+    "metrics": {
+      "algorithm": "ExtraTrees",
+      "accuracy": 0.9804081632653061,
+      "precision_macro": 0.928691941143178,
+      "recall_macro": 0.8837939775111875,
+      "f1_macro": 0.9035393330448701,
+      "f1_weighted": 0.9799498882948304,
+      "confusion_matrix": [
+        [
+          1182,
+          0,
+          4,
+          0
+        ],
+        [
+          1,
+          241,
+          1,
+          17
+        ],
+        [
+          10,
+          2,
+          20,
+          0
+        ],
+        [
+          0,
+          13,
+          0,
+          959
+        ]
+      ],
+      "classes": [
+        "High",
+        "Low",
+        "Medium",
+        "Very Low"
+      ]
+    },
+    "all_candidate_metrics": {
+      "RandomForest": {
+        "algorithm": "RandomForest",
+        "accuracy": 0.9791836734693877,
+        "precision_macro": 0.928398981775143,
+        "recall_macro": 0.8802050253111242,
+        "f1_macro": 0.9015362723255801,
+        "f1_weighted": 0.9786646586165434,
+        "confusion_matrix": [
+          [
+            1182,
+            0,
+            4,
+            0
+          ],
+          [
+            1,
+            237,
+            1,
+            21
+          ],
+          [
+            10,
+            2,
+            20,
+            0
+          ],
+          [
+            0,
+            12,
+            0,
+            960
+          ]
+        ],
+        "classes": [
+          "High",
+          "Low",
+          "Medium",
+          "Very Low"
+        ]
+      },
+      "ExtraTrees": {
+        "algorithm": "ExtraTrees",
+        "accuracy": 0.9804081632653061,
+        "precision_macro": 0.928691941143178,
+        "recall_macro": 0.8837939775111875,
+        "f1_macro": 0.9035393330448701,
+        "f1_weighted": 0.9799498882948304,
+        "confusion_matrix": [
+          [
+            1182,
+            0,
+            4,
+            0
+          ],
+          [
+            1,
+            241,
+            1,
+            17
+          ],
+          [
+            10,
+            2,
+            20,
+            0
+          ],
+          [
+            0,
+            13,
+            0,
+            959
+          ]
+        ],
+        "classes": [
+          "High",
+          "Low",
+          "Medium",
+          "Very Low"
+        ]
+      },
+      "GradientBoosting": {
+        "algorithm": "GradientBoosting",
+        "accuracy": 0.9824489795918367,
+        "precision_macro": 0.9494151726411468,
+        "recall_macro": 0.8692650522183734,
+        "f1_macro": 0.9015223437195744,
+        "f1_weighted": 0.9816398108840293,
+        "confusion_matrix": [
+          [
+            1182,
+            0,
+            2,
+            2
+          ],
+          [
+            1,
+            240,
+            1,
+            18
+          ],
+          [
+            12,
+            2,
+            18,
+            0
+          ],
+          [
+            0,
+            5,
+            0,
+            967
+          ]
+        ],
+        "classes": [
+          "High",
+          "Low",
+          "Medium",
+          "Very Low"
+        ]
+      },
+      "DecisionTree": {
+        "algorithm": "DecisionTree",
+        "accuracy": 0.9722448979591837,
+        "precision_macro": 0.8610385861679601,
+        "recall_macro": 0.876343097053468,
+        "f1_macro": 0.8681751249608515,
+        "f1_weighted": 0.972547848497982,
+        "confusion_matrix": [
+          [
+            1171,
+            0,
+            15,
+            0
+          ],
+          [
+            1,
+            237,
+            1,
+            21
+          ],
+          [
+            9,
+            3,
+            20,
+            0
+          ],
+          [
+            0,
+            18,
+            0,
+            954
+          ]
+        ],
+        "classes": [
+          "High",
+          "Low",
+          "Medium",
+          "Very Low"
+        ]
+      },
+      "KNN": {
+        "algorithm": "KNN",
+        "accuracy": 0.9795918367346939,
+        "precision_macro": 0.9389238490259465,
+        "recall_macro": 0.8515568890404941,
+        "f1_macro": 0.8842861494198669,
+        "f1_weighted": 0.9785475035982689,
+        "confusion_matrix": [
+          [
+            1184,
+            0,
+            2,
+            0
+          ],
+          [
+            1,
+            239,
+            1,
+            19
+          ],
+          [
+            13,
+            3,
+            16,
+            0
+          ],
+          [
+            0,
+            11,
+            0,
+            961
+          ]
+        ],
+        "classes": [
+          "High",
+          "Low",
+          "Medium",
+          "Very Low"
+        ]
+      },
+      "LogisticRegression": {
+        "algorithm": "LogisticRegression",
+        "accuracy": 0.9118367346938776,
+        "precision_macro": 0.796407069818324,
+        "recall_macro": 0.6340158218548466,
+        "f1_macro": 0.6511393775630127,
+        "f1_weighted": 0.9041709250942719,
+        "confusion_matrix": [
+          [
+            1185,
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            141,
+            0,
+            118
+          ],
+          [
+            11,
+            9,
+            2,
+            10
+          ],
+          [
+            0,
+            66,
+            0,
+            906
+          ]
+        ],
+        "classes": [
+          "High",
+          "Low",
+          "Medium",
+          "Very Low"
+        ]
+      },
+      "NaiveBayes": {
+        "algorithm": "NaiveBayes",
+        "accuracy": 0.8771428571428571,
+        "precision_macro": 0.5446731080290219,
+        "recall_macro": 0.529454279429687,
+        "f1_macro": 0.5077687347062977,
+        "f1_weighted": 0.8315056415416028,
+        "confusion_matrix": [
+          [
+            1183,
+            0,
+            3,
+            0
+          ],
+          [
+            1,
+            2,
+            10,
+            247
+          ],
+          [
+            9,
+            0,
+            4,
+            19
+          ],
+          [
+            0,
+            7,
+            5,
+            960
+          ]
+        ],
+        "classes": [
+          "High",
+          "Low",
+          "Medium",
+          "Very Low"
+        ]
+      }
+    },
+    "training_timestamp": "2026-10-03T07:50:47.947752+00:00",
+    "sklearn_version": "1.6.1"
+  },
+  "response": {
+    "target": "response",
+    "selected_model": "RandomForest",
+    "feature_names": [
+      "F1_Jobs_1Min",
+      "F2_Jobs_5Min",
+      "F3_Jobs_15Min",
+      "F4_Mem_GB",
+      "F5_Disk_GB",
+      "F6_Num_CPU",
+      "F7_CPU_Speed",
+      "F8_Avg_Receive_Kbps",
+      "F9_Avg_Transmit_Kbps"
+    ],
+    "training_samples": 25697,
+    "test_samples": 2450,
+    "classes": [
+      "High",
+      "Low",
+      "Very Low"
+    ],
+    "metrics": {
+      "algorithm": "RandomForest",
+      "accuracy": 0.966530612244898,
+      "precision_macro": 0.8642291118731859,
+      "recall_macro": 0.7538655380424206,
+      "f1_macro": 0.8019286619153906,
+      "f1_weighted": 0.9648493407652706,
+      "confusion_matrix": [
+        [
+          2261,
+          21,
+          2
+        ],
+        [
+          53,
+          97,
+          0
+        ],
+        [
+          0,
+          6,
+          10
+        ]
+      ],
+      "classes": [
+        "High",
+        "Low",
+        "Very Low"
+      ]
+    },
+    "all_candidate_metrics": {
+      "RandomForest": {
+        "algorithm": "RandomForest",
+        "accuracy": 0.966530612244898,
+        "precision_macro": 0.8642291118731859,
+        "recall_macro": 0.7538655380424206,
+        "f1_macro": 0.8019286619153906,
+        "f1_weighted": 0.9648493407652706,
+        "confusion_matrix": [
+          [
+            2261,
+            21,
+            2
+          ],
+          [
+            53,
+            97,
+            0
+          ],
+          [
+            0,
+            6,
+            10
+          ]
+        ],
+        "classes": [
+          "High",
+          "Low",
+          "Very Low"
+        ]
+      },
+      "ExtraTrees": {
+        "algorithm": "ExtraTrees",
+        "accuracy": 0.9648979591836735,
+        "precision_macro": 0.8336567636957755,
+        "recall_macro": 0.7553580463125122,
+        "f1_macro": 0.7908158641219577,
+        "f1_weighted": 0.9635642326241516,
+        "confusion_matrix": [
+          [
+            2256,
+            26,
+            2
+          ],
+          [
+            51,
+            98,
+            1
+          ],
+          [
+            0,
+            6,
+            10
+          ]
+        ],
+        "classes": [
+          "High",
+          "Low",
+          "Very Low"
+        ]
+      },
+      "GradientBoosting": {
+        "algorithm": "GradientBoosting",
+        "accuracy": 0.9640816326530612,
+        "precision_macro": 0.8481412396099222,
+        "recall_macro": 0.7239973730297723,
+        "f1_macro": 0.776107045380118,
+        "f1_weighted": 0.9621460153952208,
+        "confusion_matrix": [
+          [
+            2260,
+            24,
+            0
+          ],
+          [
+            55,
+            93,
+            2
+          ],
+          [
+            0,
+            7,
+            9
+          ]
+        ],
+        "classes": [
+          "High",
+          "Low",
+          "Very Low"
+        ]
+      },
+      "DecisionTree": {
+        "algorithm": "DecisionTree",
+        "accuracy": 0.953469387755102,
+        "precision_macro": 0.795736498727396,
+        "recall_macro": 0.7222037361354349,
+        "f1_macro": 0.7554495677449884,
+        "f1_weighted": 0.9517561253690519,
+        "confusion_matrix": [
+          [
+            2242,
+            41,
+            1
+          ],
+          [
+            64,
+            84,
+            2
+          ],
+          [
+            1,
+            5,
+            10
+          ]
+        ],
+        "classes": [
+          "High",
+          "Low",
+          "Very Low"
+        ]
+      },
+      "KNN": {
+        "algorithm": "KNN",
+        "accuracy": 0.9628571428571429,
+        "precision_macro": 0.899472587922817,
+        "recall_macro": 0.7091009924109749,
+        "f1_macro": 0.7756803062580251,
+        "f1_weighted": 0.9612895258525083,
+        "confusion_matrix": [
+          [
+            2255,
+            29,
+            0
+          ],
+          [
+            54,
+            96,
+            0
+          ],
+          [
+            0,
+            8,
+            8
+          ]
+        ],
+        "classes": [
+          "High",
+          "Low",
+          "Very Low"
+        ]
+      },
+      "LogisticRegression": {
+        "algorithm": "LogisticRegression",
+        "accuracy": 0.9493877551020408,
+        "precision_macro": 0.8616131828175208,
+        "recall_macro": 0.6026979957190114,
+        "f1_macro": 0.680053021913487,
+        "f1_weighted": 0.9446023705767417,
+        "confusion_matrix": [
+          [
+            2253,
+            31,
+            0
+          ],
+          [
+            83,
+            67,
+            0
+          ],
+          [
+            0,
+            10,
+            6
+          ]
+        ],
+        "classes": [
+          "High",
+          "Low",
+          "Very Low"
+        ]
+      },
+      "NaiveBayes": {
+        "algorithm": "NaiveBayes",
+        "accuracy": 0.5742857142857143,
+        "precision_macro": 0.6713312809030693,
+        "recall_macro": 0.680206265810469,
+        "f1_macro": 0.5232119725837893,
+        "f1_weighted": 0.6772678424171026,
+        "confusion_matrix": [
+          [
+            1250,
+            1034,
+            0
+          ],
+          [
+            0,
+            149,
+            1
+          ],
+          [
+            0,
+            8,
+            8
+          ]
+        ],
+        "classes": [
+          "High",
+          "Low",
+          "Very Low"
+        ]
+      }
+    },
+    "training_timestamp": "2026-10-03T07:50:53.784399+00:00",
+    "sklearn_version": "1.6.1"
+  }
+}

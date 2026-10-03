@@ -1,0 +1,347 @@
+{
+  "target": "memory",
+  "selected_model": "ExtraTrees",
+  "feature_names": [
+    "F1_Jobs_1Min",
+    "F2_Jobs_5Min",
+    "F3_Jobs_15Min",
+    "F4_Mem_GB",
+    "F5_Disk_GB",
+    "F6_Num_CPU",
+    "F7_CPU_Speed",
+    "F8_Avg_Receive_Kbps",
+    "F9_Avg_Transmit_Kbps"
+  ],
+  "training_samples": 25697,
+  "test_samples": 2450,
+  "classes": [
+    "High",
+    "Low",
+    "Medium",
+    "Very Low"
+  ],
+  "metrics": {
+    "algorithm": "ExtraTrees",
+    "accuracy": 0.9804081632653061,
+    "precision_macro": 0.928691941143178,
+    "recall_macro": 0.8837939775111875,
+    "f1_macro": 0.9035393330448701,
+    "f1_weighted": 0.9799498882948304,
+    "confusion_matrix": [
+      [
+        1182,
+        0,
+        4,
+        0
+      ],
+      [
+        1,
+        241,
+        1,
+        17
+      ],
+      [
+        10,
+        2,
+        20,
+        0
+      ],
+      [
+        0,
+        13,
+        0,
+        959
+      ]
+    ],
+    "classes": [
+      "High",
+      "Low",
+      "Medium",
+      "Very Low"
+    ]
+  },
+  "all_candidate_metrics": {
+    "RandomForest": {
+      "algorithm": "RandomForest",
+      "accuracy": 0.9791836734693877,
+      "precision_macro": 0.928398981775143,
+      "recall_macro": 0.8802050253111242,
+      "f1_macro": 0.9015362723255801,
+      "f1_weighted": 0.9786646586165434,
+      "confusion_matrix": [
+        [
+          1182,
+          0,
+          4,
+          0
+        ],
+        [
+          1,
+          237,
+          1,
+          21
+        ],
+        [
+          10,
+          2,
+          20,
+          0
+        ],
+        [
+          0,
+          12,
+          0,
+          960
+        ]
+      ],
+      "classes": [
+        "High",
+        "Low",
+        "Medium",
+        "Very Low"
+      ]
+    },
+    "ExtraTrees": {
+      "algorithm": "ExtraTrees",
+      "accuracy": 0.9804081632653061,
+      "precision_macro": 0.928691941143178,
+      "recall_macro": 0.8837939775111875,
+      "f1_macro": 0.9035393330448701,
+      "f1_weighted": 0.9799498882948304,
+      "confusion_matrix": [
+        [
+          1182,
+          0,
+          4,
+          0
+        ],
+        [
+          1,
+          241,
+          1,
+          17
+        ],
+        [
+          10,
+          2,
+          20,
+          0
+        ],
+        [
+          0,
+          13,
+          0,
+          959
+        ]
+      ],
+      "classes": [
+        "High",
+        "Low",
+        "Medium",
+        "Very Low"
+      ]
+    },
+    "GradientBoosting": {
+      "algorithm": "GradientBoosting",
+      "accuracy": 0.9824489795918367,
+      "precision_macro": 0.9494151726411468,
+      "recall_macro": 0.8692650522183734,
+      "f1_macro": 0.9015223437195744,
+      "f1_weighted": 0.9816398108840293,
+      "confusion_matrix": [
+        [
+          1182,
+          0,
+          2,
+          2
+        ],
+        [
+          1,
+          240,
+          1,
+          18
+        ],
+        [
+          12,
+          2,
+          18,
+          0
+        ],
+        [
+          0,
+          5,
+          0,
+          967
+        ]
+      ],
+      "classes": [
+        "High",
+        "Low",
+        "Medium",
+        "Very Low"
+      ]
+    },
+    "DecisionTree": {
+      "algorithm": "DecisionTree",
+      "accuracy": 0.9722448979591837,
+      "precision_macro": 0.8610385861679601,
+      "recall_macro": 0.876343097053468,
+      "f1_macro": 0.8681751249608515,
+      "f1_weighted": 0.972547848497982,
+      "confusion_matrix": [
+        [
+          1171,
+          0,
+          15,
+          0
+        ],
+        [
+          1,
+          237,
+          1,
+          21
+        ],
+        [
+          9,
+          3,
+          20,
+          0
+        ],
+        [
+          0,
+          18,
+          0,
+          954
+        ]
+      ],
+      "classes": [
+        "High",
+        "Low",
+        "Medium",
+        "Very Low"
+      ]
+    },
+    "KNN": {
+      "algorithm": "KNN",
+      "accuracy": 0.9795918367346939,
+      "precision_macro": 0.9389238490259465,
+      "recall_macro": 0.8515568890404941,
+      "f1_macro": 0.8842861494198669,
+      "f1_weighted": 0.9785475035982689,
+      "confusion_matrix": [
+        [
+          1184,
+          0,
+          2,
+          0
+        ],
+        [
+          1,
+          239,
+          1,
+          19
+        ],
+        [
+          13,
+          3,
+          16,
+          0
+        ],
+        [
+          0,
+          11,
+          0,
+          961
+        ]
+      ],
+      "classes": [
+        "High",
+        "Low",
+        "Medium",
+        "Very Low"
+      ]
+    },
+    "LogisticRegression": {
+      "algorithm": "LogisticRegression",
+      "accuracy": 0.9118367346938776,
+      "precision_macro": 0.796407069818324,
+      "recall_macro": 0.6340158218548466,
+      "f1_macro": 0.6511393775630127,
+      "f1_weighted": 0.9041709250942719,
+      "confusion_matrix": [
+        [
+          1185,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          141,
+          0,
+          118
+        ],
+        [
+          11,
+          9,
+          2,
+          10
+        ],
+        [
+          0,
+          66,
+          0,
+          906
+        ]
+      ],
+      "classes": [
+        "High",
+        "Low",
+        "Medium",
+        "Very Low"
+      ]
+    },
+    "NaiveBayes": {
+      "algorithm": "NaiveBayes",
+      "accuracy": 0.8771428571428571,
+      "precision_macro": 0.5446731080290219,
+      "recall_macro": 0.529454279429687,
+      "f1_macro": 0.5077687347062977,
+      "f1_weighted": 0.8315056415416028,
+      "confusion_matrix": [
+        [
+          1183,
+          0,
+          3,
+          0
+        ],
+        [
+          1,
+          2,
+          10,
+          247
+        ],
+        [
+          9,
+          0,
+          4,
+          19
+        ],
+        [
+          0,
+          7,
+          5,
+          960
+        ]
+      ],
+      "classes": [
+        "High",
+        "Low",
+        "Medium",
+        "Very Low"
+      ]
+    }
+  },
+  "training_timestamp": "2026-10-03T07:50:47.947752+00:00",
+  "sklearn_version": "1.6.1"
+}

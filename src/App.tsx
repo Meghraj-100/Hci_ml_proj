@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import type { WorkloadInput, RecommendResponse } from './types';
 import { recommendationApi } from './services/recommendationApi';
 import { AppHeader } from './components/layout/AppHeader';
@@ -39,9 +39,37 @@ export const App: React.FC = () => {
     total: 14,
   });
 
+  // Helper to transition view state while synchronizing browser history
+  const navigateToView = (newView: ViewState, newStep: FlowStep, pushHistory = true) => {
+    setView(newView);
+    setCurrentStep(newStep);
+    if (pushHistory) {
+      window.history.pushState({ view: newView, step: newStep }, '');
+    }
+  };
+
+  useEffect(() => {
+    // Initialize root history entry
+    window.history.replaceState({ view: 'landing', step: 1 }, '');
+
+    const handlePopState = (event: PopStateEvent) => {
+      if (event.state && event.state.view) {
+        setView(event.state.view as ViewState);
+        if (event.state.step) {
+          setCurrentStep(event.state.step as FlowStep);
+        }
+      } else {
+        setView('landing');
+        setCurrentStep(1);
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
   const handleStart = () => {
-    setView('input');
-    setCurrentStep(1);
+    navigateToView('input', 1);
   };
 
   const handleSelectPreset = (presetKey: string) => {
@@ -85,8 +113,7 @@ export const App: React.FC = () => {
         minRamGB: '',
       });
     }
-    setView('input');
-    setCurrentStep(1);
+    navigateToView('input', 1);
   };
 
   const handleFormSubmit = async (values: WorkloadInput) => {
@@ -102,11 +129,9 @@ export const App: React.FC = () => {
       setRecommendResponse(result);
 
       if (result.success && result.recommendations.length > 0) {
-        setView('results');
-        setCurrentStep(3);
+        navigateToView('results', 3);
       } else {
-        setView('empty');
-        setCurrentStep(2);
+        navigateToView('empty', 2);
       }
     } catch (err) {
       console.error('Recommendation API error:', err);
@@ -118,7 +143,7 @@ export const App: React.FC = () => {
         filteredOutCount: 0,
         emptyStateReason: 'Unable to communicate with the recommendation engine. Please check parameters.',
       });
-      setView('empty');
+      navigateToView('empty', 2);
     }
   };
 
@@ -129,25 +154,21 @@ export const App: React.FC = () => {
         maxPrice: suggestedPrice,
       }));
     }
-    setView('input');
-    setCurrentStep(1);
+    navigateToView('input', 1);
   };
 
   const handleEditInputs = () => {
-    setView('input');
-    setCurrentStep(1);
+    navigateToView('input', 1);
   };
 
   const handleReset = () => {
     setWorkload(DEFAULT_WORKLOAD);
     setRecommendResponse(null);
-    setView('input');
-    setCurrentStep(1);
+    navigateToView('input', 1);
   };
 
   const handleNavigateHome = () => {
-    setView('landing');
-    setCurrentStep(1);
+    navigateToView('landing', 1);
   };
 
   return (
@@ -159,8 +180,7 @@ export const App: React.FC = () => {
           onStepClick={(s) => {
             if (s === 1) handleEditInputs();
             if (s === 3 && recommendResponse?.success) {
-              setView('results');
-              setCurrentStep(3);
+              navigateToView('results', 3);
             }
           }}
         />
@@ -182,7 +202,6 @@ export const App: React.FC = () => {
             <span className="footer-title">CloudSizer</span>
             <span className="footer-desc">Machine learning assisted infrastructure planning</span>
           </div>
-
         </div>
       </footer>
     </div>
