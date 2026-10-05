@@ -1,0 +1,30 @@
+[
+  {
+    "candidate_count": 10,
+    "feature_construction_ms": 1.32,
+    "batch_prediction_ms": 74.52,
+    "ranking_ms": 1.04,
+    "total_recommendation_ms": 76.88
+  },
+  {
+    "candidate_count": 100,
+    "feature_construction_ms": 0.37,
+    "batch_prediction_ms": 41.31,
+    "ranking_ms": 0.21,
+    "total_recommendation_ms": 41.89
+  },
+  {
+    "candidate_count": 500,
+    "feature_construction_ms": 0.66,
+    "batch_prediction_ms": 44.31,
+    "ranking_ms": 0.88,
+    "total_recommendation_ms": 45.85
+  },
+  {
+    "candidate_count": 1000,
+    "feature_construction_ms": 1.15,
+    "batch_prediction_ms": 40.15,
+    "ranking_ms": 1.6,
+    "total_recommendation_ms": 42.9
+  }
+]

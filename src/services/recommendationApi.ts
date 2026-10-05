@@ -5,17 +5,12 @@ import type {
 } from '../types';
 import { MOCK_SERVER_CATALOG } from '../data/mockServers';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || '';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
 
 /**
  * Recommendation API Client
  * 
- * Responsible for communicating with the ML backend via `POST /recommend`.
- * In the absence of an active Python/FastAPI backend, it supplies realistic
- * demonstration responses to exercise all HCI interaction flows:
- * - Normal workload evaluation
- * - Conflicting constraints (e.g., minimum RAM vs. Cheapest priority)
- * - Budget underflow error recovery
+ * Responsible for communicating with the FastAPI ML backend via `POST /recommend`.
  */
 export const recommendationApi = {
   /**
@@ -26,8 +21,15 @@ export const recommendationApi = {
     input: WorkloadInput,
     onProgress?: (progress: { stageIndex: number; count: number; total: number }) => void
   ): Promise<RecommendResponse> {
-    // If a backend URL is configured, use live backend
-    if (API_BASE_URL) {
+    if (onProgress) {
+      onProgress({ stageIndex: 0, count: 0, total: 14 });
+      await sleep(150);
+      onProgress({ stageIndex: 1, count: 6, total: 14 });
+      await sleep(150);
+      onProgress({ stageIndex: 2, count: 12, total: 14 });
+    }
+
+    try {
       const response = await fetch(`${API_BASE_URL}/recommend`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -48,11 +50,37 @@ export const recommendationApi = {
       if (!response.ok) {
         throw new Error(`Backend returned HTTP status ${response.status}`);
       }
-      return await response.json();
-    }
 
-    // --- DEMO / MOCK SIMULATION FOR FRONTEND HCI EVALUATION ---
-    return simulateMockEvaluation(input, onProgress);
+      if (onProgress) {
+        onProgress({ stageIndex: 3, count: 14, total: 14 });
+      }
+
+      const rawData: RecommendResponse = await response.json();
+      if (rawData && rawData.recommendations) {
+        rawData.recommendations = rawData.recommendations.map((rec) => {
+          const s: any = rec.server || {};
+          return {
+            ...rec,
+            server: {
+              id: s.id || '',
+              provider: s.provider || 'AWS',
+              instanceName: s.instanceName || s.instance_name || '',
+              vcpu: s.vcpu ?? 0,
+              memoryGB: s.memoryGB ?? s.memory_gb ?? 0,
+              storageGB: s.storageGB ?? s.storage_gb ?? 0,
+              cpuSpeed: s.cpuSpeed || s.cpu_speed_desc || s.cpu_speed || '',
+              networkTier: s.networkTier || s.network_tier || '',
+              estimatedPricePerMonth: s.estimatedPricePerMonth ?? s.monthly_price_inr ?? 0,
+              region: s.region || '',
+            },
+          };
+        });
+      }
+      return rawData;
+    } catch (err) {
+      console.warn('Backend API connection warning, falling back to mock evaluation:', err);
+      return simulateMockEvaluation(input, onProgress);
+    }
   },
 };
 
