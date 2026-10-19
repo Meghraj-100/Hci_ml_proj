@@ -56,6 +56,8 @@ export const recommendationApi = {
       }
 
       const rawData: RecommendResponse = await response.json();
+      rawData.isFallback = false;
+      rawData.backendMessage = 'Evaluated dynamically using live Machine Learning backend models.';
       if (rawData && rawData.recommendations) {
         rawData.recommendations = rawData.recommendations.map((rec) => {
           const s: any = rec.server || {};
@@ -123,6 +125,8 @@ async function simulateMockEvaluation(
       filteredOutCount: totalServers,
       cheapestSuitablePrice: lowestCatalogPrice,
       emptyStateReason: `Your maximum budget of ₹${maxBudget.toLocaleString('en-IN')}/month is below the minimum viable server configuration in the catalog (₹${lowestCatalogPrice.toLocaleString('en-IN')}/month).`,
+      isFallback: true,
+      backendMessage: 'Backend ML service is offline or unreachable. Evaluation was performed using local catalog heuristics.',
     };
   }
 
@@ -278,6 +282,8 @@ async function simulateMockEvaluation(
     totalCandidatesEvaluated: totalServers,
     filteredOutCount: totalServers - 3,
     compromiseExplanation: compromiseNote,
+    isFallback: true,
+    backendMessage: 'Backend ML service is currently offline or unreachable. Showing sample recommendations generated using local catalog heuristics for demonstration.',
   };
 }
 

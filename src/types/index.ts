@@ -66,6 +66,8 @@ export interface RecommendResponse {
   compromiseExplanation?: string;
   cheapestSuitablePrice?: number;
   emptyStateReason?: string;
+  isFallback?: boolean;
+  backendMessage?: string;
 }
 
 export interface ProgressStage {

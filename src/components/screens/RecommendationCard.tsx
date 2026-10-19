@@ -10,6 +10,7 @@ interface RecommendationCardProps {
   onSelect: (item: RecommendationItem) => void;
   isSelected?: boolean;
   isExpanded?: boolean;
+  isFallback?: boolean;
   onToggleExpand?: () => void;
 }
 
@@ -19,6 +20,7 @@ export const RecommendationCard: React.FC<RecommendationCardProps> = ({
   onSelect,
   isSelected = false,
   isExpanded = false,
+  isFallback = false,
   onToggleExpand,
 }) => {
   const { server, category, suitabilityScore, predictedPerformance, rationale, advantages, tradeoffs } = item;
@@ -34,9 +36,12 @@ export const RecommendationCard: React.FC<RecommendationCardProps> = ({
       {/* 1. Header: Primary Instance Name & Metadata */}
       <div className="card-header-block">
         <div className="card-title-group">
-          <span className="card-category-sub">
-            {isBalanced ? 'Recommended choice' : category === 'cheapest' ? 'Budget option' : 'High capacity'}
-          </span>
+          <div className="card-category-row">
+            <span className="card-category-sub">
+              {isBalanced ? 'Recommended choice' : category === 'cheapest' ? 'Budget option' : 'High capacity'}
+            </span>
+            {isFallback && <span className="card-sample-pill">Sample</span>}
+          </div>
           <h3 className="card-instance-name">
             {server.provider} {server.instanceName}
           </h3>

@@ -5,6 +5,8 @@ import './EmptyStateView.css';
 interface EmptyStateViewProps {
   reason?: string;
   cheapestSuitablePrice?: number;
+  isFallback?: boolean;
+  backendMessage?: string;
   onAdjustBudget: (suggestedPrice?: number) => void;
   onEditRequirements: () => void;
 }
@@ -12,6 +14,8 @@ interface EmptyStateViewProps {
 export const EmptyStateView: React.FC<EmptyStateViewProps> = ({
   reason,
   cheapestSuitablePrice,
+  isFallback = false,
+  backendMessage,
   onAdjustBudget,
   onEditRequirements,
 }) => {
@@ -22,7 +26,15 @@ export const EmptyStateView: React.FC<EmptyStateViewProps> = ({
       </div>
 
       <div className="empty-content">
-        <h2>No suitable servers found</h2>
+        <div className="empty-title-group">
+          <h2>No suitable servers found</h2>
+          {isFallback && (
+            <div className="empty-offline-notice">
+              <span className="demo-badge-small">Demo Mode</span>
+              <span>{backendMessage || 'Backend unavailable · Local catalog heuristics'}</span>
+            </div>
+          )}
+        </div>
         <p className="empty-reason-text">
           {reason ||
             'Your current budget or resource requirements exclude all available servers in the catalog.'}

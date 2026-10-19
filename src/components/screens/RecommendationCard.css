@@ -41,10 +41,29 @@
   gap: 2px;
 }
 
+.card-category-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
 .card-category-sub {
   font-size: var(--font-xs);
   font-weight: var(--weight-medium);
   color: var(--text-muted);
+}
+
+.card-sample-pill {
+  background-color: var(--status-warn-bg);
+  border: 1px solid var(--status-warn-border);
+  color: var(--status-warn-text);
+  font-size: 0.625rem;
+  font-weight: var(--weight-bold);
+  padding: 0 5px;
+  border-radius: var(--radius-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
 }
 
 .card-instance-name {

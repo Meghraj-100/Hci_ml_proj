@@ -191,8 +191,27 @@ export const App: React.FC = () => {
           {view === 'landing' && <LandingView onStart={handleStart} onSelectPreset={handleSelectPreset} />}
           {view === 'input' && <WorkloadForm initialValues={workload} onSubmit={handleFormSubmit} onReset={() => setWorkload(DEFAULT_WORKLOAD)} />}
           {view === 'processing' && <ProcessingView currentStageIndex={evalProgress.stageIndex} evaluatedCount={evalProgress.count} totalServers={evalProgress.total} />}
-          {view === 'results' && recommendResponse && <RecommendationsView recommendations={recommendResponse.recommendations} workload={workload} compromiseNote={recommendResponse.compromiseExplanation} onEditInputs={handleEditInputs} onReset={handleReset} />}
-          {view === 'empty' && <EmptyStateView reason={recommendResponse?.emptyStateReason} cheapestSuitablePrice={recommendResponse?.cheapestSuitablePrice} onAdjustBudget={handleAdjustBudget} onEditRequirements={handleEditInputs} />}
+          {view === 'results' && recommendResponse && (
+            <RecommendationsView
+              recommendations={recommendResponse.recommendations}
+              workload={workload}
+              compromiseNote={recommendResponse.compromiseExplanation}
+              isFallback={recommendResponse.isFallback}
+              backendMessage={recommendResponse.backendMessage}
+              onEditInputs={handleEditInputs}
+              onReset={handleReset}
+            />
+          )}
+          {view === 'empty' && (
+            <EmptyStateView
+              reason={recommendResponse?.emptyStateReason}
+              cheapestSuitablePrice={recommendResponse?.cheapestSuitablePrice}
+              isFallback={recommendResponse?.isFallback}
+              backendMessage={recommendResponse?.backendMessage}
+              onAdjustBudget={handleAdjustBudget}
+              onEditRequirements={handleEditInputs}
+            />
+          )}
         </div>
       </main>
 

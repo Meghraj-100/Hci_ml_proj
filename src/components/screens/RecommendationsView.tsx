@@ -11,6 +11,8 @@ interface RecommendationsViewProps {
   recommendations: RecommendationItem[];
   workload: WorkloadInput;
   compromiseNote?: string;
+  isFallback?: boolean;
+  backendMessage?: string;
   onEditInputs: () => void;
   onReset: () => void;
 }
@@ -19,6 +21,8 @@ export const RecommendationsView: React.FC<RecommendationsViewProps> = ({
   recommendations,
   workload,
   compromiseNote,
+  isFallback = false,
+  backendMessage,
   onEditInputs,
   onReset,
 }) => {
@@ -37,10 +41,21 @@ export const RecommendationsView: React.FC<RecommendationsViewProps> = ({
       <div className="results-header-row">
         <div className="results-header-text">
           <div className="results-kicker">
-            <span>Evaluation complete</span>
-            <span className="results-kicker-meta">· Benchmarked against candidate AWS and Azure catalog</span>
+            {isFallback ? (
+              <span className="results-kicker-fallback">
+                <span className="demo-pill-kicker">Demo Data</span>
+                <span>Sample recommendations · Backend offline · Local heuristic evaluation</span>
+              </span>
+            ) : (
+              <>
+                <span>Evaluation complete</span>
+                <span className="results-kicker-meta">· Benchmarked against candidate AWS and Azure catalog</span>
+              </>
+            )}
           </div>
-          <h2>Recommended server configurations</h2>
+          <h2>
+            {isFallback ? 'Sample server recommendations (Demo Mode)' : 'Recommended server configurations'}
+          </h2>
           <p className="results-subtitle">
             Ranked options for your application workload across compute throughput, memory margins, and response latency.
           </p>
@@ -78,6 +93,24 @@ export const RecommendationsView: React.FC<RecommendationsViewProps> = ({
           </button>
         </div>
       </div>
+
+      {/* Backend Offline / Demo Notice Banner */}
+      {isFallback && (
+        <div className="backend-offline-banner panel" role="status">
+          <div className="backend-offline-badge-col">
+            <span className="demo-badge-large">Demo data</span>
+          </div>
+          <div className="backend-offline-body">
+            <div className="backend-offline-headline">
+              <AlertTriangle size={15} className="backend-offline-icon" />
+              <strong>Sample recommendations (Backend ML offline)</strong>
+            </div>
+            <p className="backend-offline-desc">
+              {backendMessage || 'The machine learning backend service is currently offline or unreachable (http://localhost:8000). Showing sample recommendations generated using local catalog heuristics for demonstration and testing.'}
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* Conflicting Preferences Alert (Actionable) */}
       {compromiseNote && (
@@ -117,6 +150,7 @@ export const RecommendationsView: React.FC<RecommendationsViewProps> = ({
           <RecommendationCard
             key={item.category}
             item={item}
+            isFallback={isFallback}
             onViewDetails={(it) => setActiveDetailsItem(it)}
             onSelect={(it) => setSelectedServer(it)}
             isSelected={selectedServer?.server.id === item.server.id}
